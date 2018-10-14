@@ -28,9 +28,11 @@
     "tslint-consistent-codestyle": "^1.13.3",
     "tslint-react": "^3.6.0",
     "tslint-sonarts": "^1.8.0",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "semantic-release": "^15.9.12"
   },
   "scripts": {
+    "semantic-release": "semantic-release",
     "tsc": "tsc",
     "clean": "rimraf dist",
     "build": "npm run clean && npm run tsc --",
