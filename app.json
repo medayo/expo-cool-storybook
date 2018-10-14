@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "sdkVersion": "29.0.0",
+    "name": "demo-cool-storybook",
+    "description": "demo",
+    "privacy": "unlisted",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "extra": {
+      "storybook": false
+    },
+    "loading": {
+      "hideExponentText": false
+    },
+    "packagerOpts": {
+      "assetExts": [
+        "ttf",
+        "mp4"
+      ]
+    },
+    "ios": {
+      "supportsTablet": false
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#fff",
+      "barStyle": "dark-content"
+    }
+  }
+}
