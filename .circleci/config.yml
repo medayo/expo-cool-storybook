@@ -7,7 +7,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:8.9.1
+    - image: circleci/node:8
 
 jobs:
   build:
@@ -46,14 +46,9 @@ workflows:
   test-deploy:
     jobs:
       - build:
-          filters:
-            tags:
-              only: /^v*/
       - deploy:
           requires:
             - build
           filters:
-            branches:
-              ignore: /.*/
             tags:
-              only: /^v[0-9]++.[0-9]++.[0-9]++$/
+              only: /^v.*/
