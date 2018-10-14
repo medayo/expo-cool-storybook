@@ -1,6 +1,5 @@
-import { IStory, RenderFunction } from './stories.component';
-import { Story } from './story.component';
 
+import { Story } from './story.component';
 export class StoryStorageDef {
 
     private stories: any = {};
