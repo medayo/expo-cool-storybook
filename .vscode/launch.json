@@ -4,21 +4,5 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "Debug in Exponent",
-            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
-            "type": "reactnative",
-            "request": "launch",
-            "platform": "exponent",
-            "sourceMaps": true,
-            "outDir": "${workspaceRoot}/.vscode/.react",
-            "preLaunchTask": "watch",
-            "skipFiles": [
-                "${workspaceRoot}/node_modules/**/*.js",
-                "<node_internals>/**/*.js",
-                "/usr/src/app/node_modules/**/*.js",
-                "${workspaceRoot}/.vscode/.react/**/*"
-            ]
-        }
     ]
 }
