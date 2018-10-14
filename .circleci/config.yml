@@ -29,6 +29,13 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
+  release:
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Create tag
+          command: npm run semantic-release || true
   deploy:
     <<: *defaults
     steps:
@@ -49,6 +56,10 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+      - release:
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - build
