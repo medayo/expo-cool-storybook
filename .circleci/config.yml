@@ -26,6 +26,9 @@ jobs:
             - node_modules
           key: v1-dependencies-
 
+
+      - run: npm run build
+
       - persist_to_workspace:
           root: ~/repo
           paths: .
@@ -43,7 +46,7 @@ jobs:
             
 workflows:
   version: 2
-  
+
   build:
     jobs:
       - build:
