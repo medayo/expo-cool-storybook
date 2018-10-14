@@ -1,6 +1,6 @@
-# Expo Cool Storybook (WIP)
+# Expo Cool Storybook (WIP) - NOT WORKING
 
-Visual Regression Testing for Expo projects.
+Visual Regression Testing for Expo projects. Click watch ;-). Will be updated soon.
 
 ## Whats the problem
 
