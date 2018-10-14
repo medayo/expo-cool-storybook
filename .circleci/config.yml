@@ -10,7 +10,7 @@ defaults: &defaults
     - image: circleci/node:8.9.1
 
 jobs:
-  test:
+  build:
     <<: *defaults  
     steps:
       - checkout
@@ -45,15 +45,15 @@ workflows:
   version: 2
   test-deploy:
     jobs:
-      - test:
+      - build:
           filters:
             tags:
               only: /^v*/
       - deploy:
           requires:
-            - test
+            - build
           filters:
-            tags:
-              only: /^v*/
             branches:
               ignore: /.*/
+            tags:
+              only: /^v[0-9]++.[0-9]++.[0-9]++$/
