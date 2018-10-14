@@ -15,6 +15,8 @@
     "@types/react": "^16.4.14",
     "@types/react-native": "^0.55.28",
     "@types/react-test-renderer": "^16.0.3",
+    "commitizen": "^3.0.2",
+    "cz-conventional-changelog": "^1.1.5",
     "exp": "^57.2.1",
     "expo-cli": "^2.2.0",
     "gflow": "^3.1.2",
@@ -40,7 +42,8 @@
     "build:release": "npm run clean && npm run tsc -- -d ",
     "prepublish": "npm run build:release",
     "watch": "npm run build -- -w",
-    "test": "echo 'not yet'"
+    "test": "echo 'not yet'",
+    "commit": "git-cz"
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
