@@ -1,7 +1,7 @@
 {
   "name": "@medayo/expo-cool-storybook",
   "description": "Expo Equivalent of Storybook (p.s. we love storybook)",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "private": false,
   "main": "node_modules/expo/AppEntry.js",
   "repository": {
