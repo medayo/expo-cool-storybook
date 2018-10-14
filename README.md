@@ -1,6 +1,6 @@
 # Expo Cool Storybook (WIP)
 
-Visual Regression Testing for Expo projects!
+Visual Regression Testing for Expo projects.
 
 ## Whats the problem
 
@@ -63,4 +63,4 @@ storiesOf('Text')
 
 Once we have complete the capture, images will be stored in a story folder for you to see differences. Will probably add config for phone support in the package.json.
 
-More soon!
+More soon...

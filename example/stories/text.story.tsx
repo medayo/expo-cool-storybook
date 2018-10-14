@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { getStories, storiesOf } from '../../lib/stories.component';
+import { storiesOf } from '../../lib/';
 
 storiesOf('Circlebutton', module)
     .add('with Text', () =>

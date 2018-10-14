@@ -1,7 +1,7 @@
 {
   "name": "@medayo/expo-cool-storybook",
   "description": "Expo Equivalent of Storybook (p.s. we love storybook)",
-  "version": "0.0.12",
+  "version": "2.0.3",
   "private": false,
   "main": "node_modules/expo/AppEntry.js",
   "repository": {
@@ -9,11 +9,14 @@
     "url": "https://github.com/medayo/expo-cool-storybook.git"
   },
   "devDependencies": {
+    "@semantic-release/git": "^7.0.4",
     "@types/expo": "^27.0.13",
     "@types/jest": "^23.3.3",
     "@types/react": "^16.4.14",
     "@types/react-native": "^0.55.28",
     "@types/react-test-renderer": "^16.0.3",
+    "commitizen": "^3.0.2",
+    "cz-conventional-changelog": "^1.1.5",
     "exp": "^57.2.1",
     "expo-cli": "^2.2.0",
     "gflow": "^3.1.2",
@@ -22,15 +25,18 @@
     "jest-expo-ts": "^22.0.1",
     "react-test-renderer": "^16.5.2",
     "rimraf": "^2.6.2",
+    "semantic-release": "^15.9.17",
     "ts-jest": "^23.10.3",
     "tslint": "^5.11.0",
     "tslint-clean-code": "^0.2.7",
     "tslint-consistent-codestyle": "^1.13.3",
     "tslint-react": "^3.6.0",
     "tslint-sonarts": "^1.8.0",
-    "typescript": "^2.9.2",
-    "semantic-release": "^15.9.12"
+    "typescript": "^2.9.2"
   },
+  "files": [
+    "/dist/lib"
+  ],
   "scripts": {
     "semantic-release": "semantic-release",
     "tsc": "tsc",
@@ -39,7 +45,9 @@
     "build:release": "npm run clean && npm run tsc -- -d ",
     "prepublish": "npm run build:release",
     "watch": "npm run build -- -w",
-    "test": "echo 'not yet'"
+    "test": "echo 'not yet'",
+    "commit": "git-cz",
+    "demo": "npm run build && expo start"
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
