@@ -46,7 +46,8 @@
     "prepublish": "npm run build:release",
     "watch": "npm run build -- -w",
     "test": "echo 'not yet'",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "demo": "npm run build && expo start"
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
