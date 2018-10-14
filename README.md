@@ -1,6 +1,6 @@
 # Expo Cool Storybook (WIP)
 
-Visual Regression Testing for Expo projects!
+Visual Regression Testing for Expo projects.
 
 ## Whats the problem
 
