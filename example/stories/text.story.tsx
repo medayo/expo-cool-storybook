@@ -3,13 +3,10 @@ import { Text } from 'react-native';
 import { getStories, storiesOf } from '../../lib/stories.component';
 
 storiesOf('Circlebutton', module)
-    .add('with white Text', () =>
+    .add('with Text', () =>
         <Text>gogogo</Text>,
 
     )
-    .add('with white Text2', () =>
-        <Text>gogogo2</Text>,
+    .add('with Text 2', () =>
+        <Text>This is text2</Text>,
     );
-
-// tslint:disable-next-line:no-console
-console.log(getStories());
