@@ -4,7 +4,7 @@
     "name": "demo-cool-storybook",
     "description": "demo",
     "privacy": "unlisted",
-    "version": "0.0.1",
+    "version": "0.0.9",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "extra": {
