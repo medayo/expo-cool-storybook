@@ -63,11 +63,3 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy:
-          requires:
-            - build
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
