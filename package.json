@@ -33,7 +33,7 @@
     "build:release": "npm run clean && npm run tsc -- -d ",
     "prepublish": "npm run build:release",
     "watch": "npm run build -- -w",
-    "test": "jest"
+    "test": "echo 'not yet'"
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
