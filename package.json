@@ -30,6 +30,8 @@
     "tsc": "tsc",
     "clean": "rimraf dist",
     "build": "npm run clean && npm run tsc --",
+    "build:release": "npm run clean && npm run tsc -- -d ",
+    "prepublish": "npm run build:release",
     "watch": "npm run build -- -w",
     "test": "jest"
   },
