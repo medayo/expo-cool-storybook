@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "baseUrl": ".",
     "jsx": "react",
@@ -16,14 +16,14 @@
     "noUnusedParameters": false,
     "noUnusedLocals": false,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "suppressExcessPropertyErrors": true,
     "noEmitOnError": false,
     "skipLibCheck": true
   },
   "filesGlob": [
-    "typings/index.d.ts",
-    "./app/**/*.ts",
-    "./app/**/*.tsx"
+    "./lib/**/*.ts",
+    "./lib/**/*.tsx"
   ],
   "types": [
     "react",
