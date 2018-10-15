@@ -38,7 +38,7 @@
     "typescript": "^2.9.2"
   },
   "bin": {
-    "expo-cool-storybook": "./"
+    "expo-cool-storybook": "./dist/lib/expo-cool-storybook.js"
   },
   "files": [
     "/dist/lib",
@@ -55,7 +55,8 @@
     "watch": "npm run build -- -w",
     "test": "echo 'not yet'",
     "commit": "git-cz",
-    "demo": "npm run build:demo && expo start"
+    "demo": "npm run build:demo && expo start",
+    "cli": "npm run build && node dist/lib/expo-cool-storybook.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
