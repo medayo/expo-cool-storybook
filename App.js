@@ -1,4 +1,4 @@
-import { DemoApp } from './dist/example/app';
+import { DemoApp } from './demo/example/app';
 
 const app = DemoApp;
 

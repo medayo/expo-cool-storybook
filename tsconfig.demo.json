@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es6",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "jsx": "react",
+    "outDir": "demo",
+    "rootDir": ".",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "noImplicitReturns": false,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "experimentalDecorators": true,
+    "suppressExcessPropertyErrors": true,
+    "noEmitOnError": false,
+    "skipLibCheck": true
+  },
+  "filesGlob": [
+    "typings/index.d.ts",
+    "./app/**/*.ts",
+    "./app/**/*.tsx"
+  ],
+  "types": [
+    "react",
+    "react-native",
+    "jest"
+  ],
+  "exclude": [
+    "android",
+    "ios",
+    "artifacts",
+    "node_modules",
+    "lib"
+  ],
+  "compileOnSave": false,
+  "paths": {}
+}
