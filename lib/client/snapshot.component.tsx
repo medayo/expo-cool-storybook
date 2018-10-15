@@ -3,7 +3,7 @@ import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import { View } from 'react-native';
-import '../example/stories/text.story';
+import '../../example/stories/text.story';
 import { StoryStorage } from './story.storage';
 
 @observer export class Snapshot extends React.Component<{}, {}> {
