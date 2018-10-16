@@ -3,20 +3,20 @@ import * as gm from 'gm';
 import { $log } from 'ts-log-debug';
 class ImageServiceDef {
 
-    public compare(path1: string, path2: string, diffPath: string, tolerance: number) {
+    public compare(currentDir: string, referenceDir: string, diffDir: string, tolerance: number) {
 
-        $log.debug(path1);
+        $log.debug(currentDir);
         return new Promise((resolve, reject) => {
             gm.compare(
-                path1,
-                path2,
-                { file: diffPath, tolerance: tolerance / 100, highlightStyle: 'Tint' },
+                currentDir,
+                referenceDir,
+                { file: diffDir, tolerance: tolerance / 100, highlightStyle: 'Tint' },
                 (err, isEqual) => {
                     if (err) {
                         reject(err);
                     } else {
                         if (isEqual) {
-                            fs.remove(diffPath);
+                            fs.remove(diffDir);
                         }
                         resolve(isEqual);
                     }
