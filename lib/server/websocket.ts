@@ -1,5 +1,6 @@
 
 import * as path from 'path';
+import * as sanitize from 'sanitize-filename';
 import {
     ConnectedSocket,
     EmitOnSuccess,
@@ -30,33 +31,45 @@ export class WebsocketService {
     @EmitOnSuccess('compared')
     public async imageSave(
         @ConnectedSocket() socket: any,
-        @MessageBody() message: { image: string, imageType: string, device: string, story: { storyName: string } }) {
-        $log.debug('received message', message.story);
+        @MessageBody() message: {
+            image: string, imageType: string,
+            device: string,
+            story: { storyName: string },
+            storyName: string,
+        }) {
+
+        const basePath = './coolstorybook/';
+
+        $log.debug('received image');
         $log.debug('setting id to the message and sending it back to the client');
 
         const base64Data = message.image;
 
-        $log.debug(base64Data);
+        // tslint:disable-next-line:max-line-length
+        let fileTemplate = sanitize(`${message.device}-${message.storyName}-${message.story.storyName}`) + `.${message.imageType}`;
 
-        const saveCurrentPath = `./test/current/${message.device}-${message.story.storyName}.${message.imageType}`;
+        fileTemplate = fileTemplate.toString()
+            .replace(/ /g, '-');
+
+        const saveCurrentPath = `${basePath}current/${fileTemplate}`;
 
         await FileService.writeFile(saveCurrentPath, base64Data, 'base64');
 
         FileService.createDir(
-            path.resolve(`./test/diff/${message.device}-${message.story.storyName}.${message.imageType}`),
+            path.resolve(`${basePath}diff/${fileTemplate}`),
         );
 
         try {
             await ImageService.compare(
-                path.resolve(`./test/current/${message.device}-${message.story.storyName}.${message.imageType}`),
-                path.resolve(`./test/ref/${message.device}-${message.story.storyName}.${message.imageType}`),
-                path.resolve(`./test/diff/${message.device}-${message.story.storyName}.${message.imageType}`),
+                path.resolve(`${basePath}current/${fileTemplate}`),
+                path.resolve(`${basePath}ref/${fileTemplate}`),
+                path.resolve(`${basePath}diff/${fileTemplate}`),
                 2,
             );
         } catch (err) {
             $log.error('gm error:', err);
             $log.debug('saving ref');
-            await FileService.writeFile(`./test/ref/${message.device}-${message.story.storyName}.${message.imageType}`,
+            await FileService.writeFile(`${basePath}ref/${fileTemplate}`,
                 base64Data, 'base64');
         }
 
