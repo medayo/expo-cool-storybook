@@ -30,29 +30,33 @@ export class WebsocketService {
     @EmitOnSuccess('compared')
     public async imageSave(
         @ConnectedSocket() socket: any,
-        @MessageBody() message: { image: string, device: string, story: { storyName: string } }) {
+        @MessageBody() message: { image: string, imageType: string, device: string, story: { storyName: string } }) {
         $log.debug('received message', message.story);
         $log.debug('setting id to the message and sending it back to the client');
 
-        const base64Data = message.image.replace(/^data:image\/png;base64,/, '');
+        const base64Data = message.image;
 
-        const saveCurrentPath = `./test/current/${message.device}-${message.story.storyName}.png`;
+        $log.debug(base64Data);
+
+        const saveCurrentPath = `./test/current/${message.device}-${message.story.storyName}.${message.imageType}`;
 
         await FileService.writeFile(saveCurrentPath, base64Data, 'base64');
 
-        FileService.createDir(path.resolve(`./test/diff/${message.device}-${message.story.storyName}.png`));
+        FileService.createDir(
+            path.resolve(`./test/diff/${message.device}-${message.story.storyName}.${message.imageType}`),
+        );
 
         try {
             await ImageService.compare(
-                path.resolve(`./test/current/${message.device}-${message.story.storyName}.png`),
-                path.resolve(`./test/ref/${message.device}-${message.story.storyName}.png`),
-                path.resolve(`./test/diff/${message.device}-${message.story.storyName}.png`),
-                0.02,
+                path.resolve(`./test/current/${message.device}-${message.story.storyName}.${message.imageType}`),
+                path.resolve(`./test/ref/${message.device}-${message.story.storyName}.${message.imageType}`),
+                path.resolve(`./test/diff/${message.device}-${message.story.storyName}.${message.imageType}`),
+                2,
             );
         } catch (err) {
             $log.error('gm error:', err);
             $log.debug('saving ref');
-            await FileService.writeFile(`./test/ref/${message.device}-${message.story.storyName}.png`,
+            await FileService.writeFile(`./test/ref/${message.device}-${message.story.storyName}.${message.imageType}`,
                 base64Data, 'base64');
         }
 

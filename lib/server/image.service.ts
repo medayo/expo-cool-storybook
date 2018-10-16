@@ -10,7 +10,7 @@ class ImageServiceDef {
             gm.compare(
                 path1,
                 path2,
-                { file: diffPath, tolerance: tolerance / 100 },
+                { file: diffPath, tolerance: tolerance / 100, highlightStyle: 'Tint' },
                 (err, isEqual) => {
                     if (err) {
                         reject(err);
