@@ -18,14 +18,6 @@ class WebsocketServerDef {
     public start(port = 3001) {
         $log.debug('Starting websocket server on', port);
         server.listen(port);
-
-        app.get('/', (req: any, res: any) => {
-            res.send('hello express');
-        });
-
-        io.use((socket: any, next: () => void) => {
-            next();
-        });
         useSocketServer(io);
     }
 
