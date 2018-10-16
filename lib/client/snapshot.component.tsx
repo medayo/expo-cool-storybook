@@ -19,7 +19,7 @@ import { WebsocketService } from './websocket.service';
 
     public render() {
         return (
-            <View ref={this.loaded}>
+            <View style={{ position: 'absolute' }} ref={this.loaded}>
                 {this.storyComponent}
             </View>
         );
