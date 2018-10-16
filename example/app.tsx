@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import { Snapshot } from '../lib/client/snapshot.component';
+import { CoolStorybook } from '../lib/client/snapshot.component';
+import { CoolStorybookService } from '../lib/client/snapshot.service';
+import './stories/text.story';
+import { TextInfo } from './TextInfo';
 
 export class DemoApp extends React.Component<any, any> {
 
@@ -11,7 +14,10 @@ export class DemoApp extends React.Component<any, any> {
     public render() {
 
         return (
-            <Snapshot />
+            <View>
+                <CoolStorybook ref={(ref) => CoolStorybookService.setRef(ref)} />
+                <TextInfo>gogogo</TextInfo>
+            </View>
         );
     }
 }

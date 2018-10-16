@@ -1,7 +1,10 @@
-import { Snapshot } from './snapshot.component';
-import { storiesOf } from './stories.component';
+import { CoolStorybook } from './snapshot.component';
+import { CoolStorybookService } from './snapshot.service';
+import { CreateStory, storiesOf } from './stories.component';
 
 export {
-    Snapshot,
+    CoolStorybook,
     storiesOf,
+    CreateStory,
+    CoolStorybookService,
 };
