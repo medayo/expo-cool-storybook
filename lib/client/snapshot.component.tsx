@@ -1,10 +1,11 @@
-import { takeSnapshotAsync } from 'expo';
+import { Constants, takeSnapshotAsync } from 'expo';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import { View } from 'react-native';
 import '../../example/stories/text.story';
 import { StoryStorage } from './story.storage';
+import { WebsocketService } from './websocket.service';
 
 @observer export class Snapshot extends React.Component<{}, {}> {
     @observable public dataURI: string;
@@ -32,7 +33,7 @@ import { StoryStorage } from './story.storage';
                     result: 'base64',
                 });
                 resolve(result);
-            }, 2000);
+            }, 250);
         });
 
     }
@@ -46,8 +47,7 @@ import { StoryStorage } from './story.storage';
             for (const story of value.storyInfo) {
                 this.storyComponent = story.callback();
                 this.dataURI = await this.takeSnapshot();
-                // tslint:disable-next-line:no-console
-                console.log(this.dataURI);
+                await WebsocketService.emit('imageSent', { image: this.dataURI, device: Constants.deviceName, story });
             }
 
         });

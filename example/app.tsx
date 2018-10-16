@@ -11,9 +11,7 @@ export class DemoApp extends React.Component<any, any> {
     public render() {
 
         return (
-            <View>
-                <Snapshot />
-            </View>
+            <Snapshot />
         );
     }
 }
