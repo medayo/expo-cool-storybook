@@ -64,7 +64,6 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
-    "better-queue": "^3.8.10",
     "commander": "^2.19.0",
     "es6-shim": "^0.35.3",
     "expo": "29.0.1",
