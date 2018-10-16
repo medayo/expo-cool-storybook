@@ -3,8 +3,8 @@ import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import { View } from 'react-native';
-import '../../example/stories/text.story';
-import { StoryStorage } from './story.storage';
+import { Story } from './story.component';
+import { IStoriesOfOptions, StoryStorage } from './story.storage';
 import { WebsocketService } from './websocket.service';
 
 enum ImageType {
@@ -14,8 +14,8 @@ enum ImageType {
     webm = 'webm',
 }
 
-@observer export class Snapshot extends React.Component<{}, {}> {
-    @observable public snapshot: { snapshot: string, type: string };
+@observer export class CoolStorybook extends React.Component<{}, {}> {
+    @observable private snapshot: { snapshot: string, type: string };
     @observable private storyComponent: React.ReactNode;
     @observable private snapshotRef: any;
 
@@ -26,13 +26,34 @@ enum ImageType {
 
     public render() {
         return (
-            <View style={{ position: 'absolute' }} ref={this.loaded}>
+            <View style={{ position: 'absolute', zIndex: -999999, top: -999999 }} ref={this.loaded}>
                 {this.storyComponent}
             </View>
         );
     }
 
-    public takeSnapshot(type: ImageType = ImageType.png):
+    public sendAllStories() {
+        const stories = StoryStorage.getAll();
+        Object.entries(stories).forEach(async ([key, detail]) => {
+            await this.sendStory(detail, key);
+        });
+    }
+
+    public async sendStory(detail: { story: Story; options: IStoriesOfOptions; }, key: string) {
+        for (const story of detail.story.storyInfo) {
+            this.storyComponent = story.callback();
+            this.snapshot = await this.takeSnapshot(detail.options.transparent ? ImageType.png : ImageType.jpg);
+            await WebsocketService.emit('imageSent', {
+                device: Constants.deviceName,
+                image: this.snapshot.snapshot,
+                imageType: this.snapshot.type,
+                story,
+                storyName: key,
+            });
+        }
+    }
+
+    private takeSnapshot(type: ImageType = ImageType.png):
         Promise<{ snapshot: string, type: string }> {
         return new Promise((resolve) => {
             setTimeout(async () => {
@@ -45,25 +66,8 @@ enum ImageType {
         });
 
     }
+
     private loaded(ref: any) {
         this.snapshotRef = ref;
-        const stories = StoryStorage.getAll();
-        Object.entries(stories).forEach(async ([key, detail]) => {
-            // tslint:disable-next-line:no-console
-            console.log(key, detail);
-
-            for (const story of detail.story.storyInfo) {
-                this.storyComponent = story.callback();
-                this.snapshot = await this.takeSnapshot(detail.options.transparent ? ImageType.png : ImageType.jpg);
-                await WebsocketService.emit('imageSent', {
-                    device: Constants.deviceName,
-                    image: this.snapshot.snapshot,
-                    imageType: this.snapshot.type,
-                    story,
-                });
-            }
-
-        });
-
     }
 }
