@@ -15,6 +15,10 @@ class FileServiceDef {
         });
     }
 
+    public createDir(path: string) {
+        fs.mkdirp(dirname(path));
+    }
+
     public writeFile(path: string, data: any, opts = 'utf8') {
         return new Promise((resolve, reject) => {
             fs.mkdirp(dirname(path), (errMk) => {
