@@ -1,29 +1,37 @@
 
-import { ConnectedSocket, MessageBody, OnConnect, OnDisconnect, OnMessage, SocketController } from 'socket-controllers';
+import {
+    ConnectedSocket,
+    EmitOnSuccess,
+    MessageBody,
+    OnConnect,
+    OnDisconnect,
+    OnMessage,
+    SocketController,
+} from 'socket-controllers';
+import { $log } from 'ts-log-debug';
 
 @SocketController()
-export class MessageController {
+export class WebsocketService {
 
     @OnConnect()
     public connection(@ConnectedSocket() socket: any) {
-        // tslint:disable-next-line:no-console
-        console.log('client connected');
+        $log.debug('client connected');
     }
 
     @OnDisconnect()
     public disconnect(@ConnectedSocket() socket: any) {
-        // tslint:disable-next-line:no-console
-        console.log('client disconnected');
+        $log.debug('client disconnected');
     }
 
     @OnMessage('save')
+    @EmitOnSuccess('cool')
     public save(@ConnectedSocket() socket: any, @MessageBody() message: any) {
-        // tslint:disable-next-line:no-console
-        console.log('received message:', message);
-        // tslint:disable-next-line:no-console
-        console.log('setting id to the message and sending it back to the client');
-        message.id = 1;
-        socket.emit('message_saved', message);
+        $log.debug('received message:', message);
+        $log.debug('setting id to the message and sending it back to the client');
+        return {
+            id: 1,
+            text: 'new message',
+        };
     }
 
 }
