@@ -6,3 +6,7 @@ coverage/
 .DS_Store
 .vs/
 .expo/
+demo/
+bin/
+test/
+coolstorybook/

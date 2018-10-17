@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { storiesOf } from '../../lib/';
+import { storiesOf } from '../../lib/client';
 
-storiesOf('Circlebutton', module)
-    .add('with Text', () =>
-        <Text>gogogo</Text>,
+storiesOf('Circlebutton', { transparent: false })
+    .addDetail('with Text', () =>
+        <Text>James</Text>,
 
     )
-    .add('with Text 2', () =>
-        <Text>This is text2</Text>,
+    .addDetail('with Text 2', () =>
+        <Text>This is text212121221</Text>,
     );

@@ -5,7 +5,7 @@ export class Story {
 
     public storyInfo: Array<{ storyName: string, callback: RenderFunction }> = [];
 
-    public add(storyName: string, callback: RenderFunction): this {
+    public addDetail(storyName: string, callback: RenderFunction): this {
         this.storyInfo.push({
             callback,
             storyName,

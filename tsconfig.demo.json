@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "commonjs",
+    "module": "es6",
     "moduleResolution": "node",
     "baseUrl": ".",
     "jsx": "react",
-    "outDir": "dist",
+    "outDir": "demo",
     "rootDir": ".",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
@@ -16,14 +16,14 @@
     "noUnusedParameters": false,
     "noUnusedLocals": false,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "suppressExcessPropertyErrors": true,
     "noEmitOnError": false,
     "skipLibCheck": true
   },
   "filesGlob": [
-    "./lib/**/*.ts",
-    "./lib/**/*.tsx"
+    "typings/index.d.ts",
+    "./app/**/*.ts",
+    "./app/**/*.tsx"
   ],
   "types": [
     "react",
@@ -34,7 +34,8 @@
     "android",
     "ios",
     "artifacts",
-    "node_modules"
+    "node_modules",
+    "lib"
   ],
   "compileOnSave": false,
   "paths": {}
