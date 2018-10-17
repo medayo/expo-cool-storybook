@@ -1,6 +1,6 @@
 
 import { RenderFunction, Story } from './story.component';
-import { IStoriesOfOptions, StoryStorage } from './story.storage';
+import { IStoriesOfOptions, PhoneSizeTypes, StoryStorage } from './story.storage';
 
 export function storiesOf(
     storyName: string,
@@ -19,21 +19,21 @@ export function addStoriesOf(
     storyName: string,
     detailOfStory: string,
     render: RenderFunction,
-    options?: IStoriesOfOptions,
+    options?: { style: PhoneSizeTypes },
 ) {
 
     const story = storiesOf(
         storyName,
-        options);
+        {});
 
-    story.addDetail(detailOfStory, render);
+    story.addDetail(detailOfStory, render, options);
 }
 
 // tslint:disable-next-line:no-identical-functions
 export function CreateStory(
     detailOfStory: string,
     render: RenderFunction,
-    options?: IStoriesOfOptions,
+    options?: { style: PhoneSizeTypes },
     overideStoryClassName?: string,
 ) {
     return (target: any) => {

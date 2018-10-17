@@ -3,6 +3,13 @@ import { Story } from './story.component';
 
 export interface IStoriesOfOptions {
     transparent?: boolean;
+    style?: PhoneSizeTypes;
+}
+
+export enum PhoneSizeTypes {
+    Isolated = 'Isolated',
+    PhoneDimensions = 'PhoneDimensions',
+    PhoneCentered = 'PhoneCentered',
 }
 
 export class StoryStorageDef {
