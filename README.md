@@ -1,4 +1,6 @@
-# Expo Cool Storybook (WIP) - NOT WORKING
+[![CircleCI](https://circleci.com/gh/medayo/expo-cool-storybook.svg?style=svg)](https://circleci.com/gh/medayo/expo-cool-storybook)
+
+# Expo Cool Storybook (WIP)
 
 Visual Regression Testing for Expo projects. Click watch ;-). Will be updated soon.
 
