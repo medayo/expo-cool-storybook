@@ -16,7 +16,7 @@ export class StoryStorageDef {
         return this.stories;
     }
 
-    public add(storyName: string, story: Story, options: IStoriesOfOptions): Story {
+    public add(storyName: string, story: Story, options: IStoriesOfOptions = {}): Story {
         this.stories[storyName] = { story, options };
 
         return this.stories[storyName].story;
