@@ -2,38 +2,46 @@
 import { RenderFunction, Story } from './story.component';
 import { IStoriesOfOptions, StoryStorage } from './story.storage';
 
-export function storiesOf(name: string, options: IStoriesOfOptions): Story {
+export function storiesOf(
+    storyName: string,
+    options: IStoriesOfOptions): Story {
 
     let getStory;
     try {
-        getStory = StoryStorage.get(name).story;
+        getStory = StoryStorage.get(storyName).story;
     } catch (err) {
         getStory = new Story();
     }
-    return StoryStorage.add(name, getStory, options);
+    return StoryStorage.add(storyName, getStory, options);
+}
+
+export function addStoriesOf(
+    storyName: string,
+    detailOfStory: string,
+    render: RenderFunction,
+    options?: IStoriesOfOptions,
+) {
+
+    const story = storiesOf(
+        storyName,
+        options);
+
+    story.addDetail(detailOfStory, render);
 }
 
 // tslint:disable-next-line:no-identical-functions
 export function CreateStory(
-    detail: string,
+    detailOfStory: string,
     render: RenderFunction,
     options?: IStoriesOfOptions,
     overideStoryClassName?: string,
 ) {
     return (target: any) => {
-        let getStory;
-        try {
-            getStory = StoryStorage.get(overideStoryClassName || target.name).story;
-        } catch (err) {
-            getStory = new Story();
-        }
-
-        const story = StoryStorage.add(
+        addStoriesOf(
             overideStoryClassName || target.name,
-            getStory,
+            detailOfStory,
+            render,
             options);
-
-        story.addDetail(detail, render);
     };
 }
 
