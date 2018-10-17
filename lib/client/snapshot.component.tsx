@@ -14,29 +14,34 @@ enum ImageType {
     webm = 'webm',
 }
 
-@observer export class CoolStorybook extends React.Component<{}, {}> {
+interface ICoolStoryBook {
+    host: string;
+}
+
+@observer export class CoolStorybook extends React.Component<ICoolStoryBook, {}> {
     @observable private snapshot: { snapshot: string, type: string };
     @observable private storyComponent: React.ReactNode;
     @observable private snapshotRef: any;
 
-    constructor(props: Readonly<{}>) {
+    constructor(props: Readonly<ICoolStoryBook>) {
         super(props);
+        WebsocketService.start(props.host);
         this.loaded = this.loaded.bind(this);
     }
 
     public render() {
         return (
-            <View style={{ position: 'absolute', zIndex: -999999, top: -999999 }} ref={this.loaded}>
+            <View style={{ position: 'absolute', zIndex: -9999, top: -9999 }} ref={this.loaded}>
                 {this.storyComponent}
             </View>
         );
     }
 
-    public sendAllStories() {
+    public async sendAllStories() {
         const stories = StoryStorage.getAll();
-        Object.entries(stories).forEach(async ([key, detail]) => {
+        for (const [key, detail] of Object.entries(stories)) {
             await this.sendStory(detail, key);
-        });
+        }
     }
 
     public async sendStory(detail: { story: Story; options: IStoriesOfOptions; }, key: string) {
@@ -62,7 +67,7 @@ enum ImageType {
                     result: 'base64',
                 });
                 resolve({ snapshot: result, type });
-            }, 250);
+            }, 50);
         });
 
     }
