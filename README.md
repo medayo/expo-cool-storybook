@@ -19,50 +19,6 @@ Don't worry thought Expo "Cool Storybook" is here to npm your way into your proj
 
 Install: 
 
-> npm install expo-cool-storybook
+> npm install @medayo/expo-cool-storybook
 
-Add ```    <Snapshot />``` to the start of your app:
-
-```javascript
-import * as React from 'react';
-import { View } from 'react-native';
-import { Snapshot } from 'expo-cool-storybook';
-
-export class DemoApp extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    public render() {
-
-        return (
-            <Snapshot />
-        );
-    }
-}
-```
-
-Write a story: 
-
-```javascript
-import React from 'react';
-import { Text } from 'react-native';
-import { storiesOf } from 'expo-cool-storybook';
-
-storiesOf('Text')
-    .add('with white Text', () =>
-        <Text>gogogo</Text>,
-
-    )
-    .add('with white Text2', () =>
-        <Text>gogogo2</Text>,
-    );
-
-```
-
-### Still working out the detail but the idea is below
-
-Once we have complete the capture, images will be stored in a story folder for you to see differences. Will probably add config for phone support in the package.json.
-
-More soon...
+Please have a look in the [example](https://github.com/medayo/expo-cool-storybook/tree/master/example) folder for usage. 
