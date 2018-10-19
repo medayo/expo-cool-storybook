@@ -3,7 +3,7 @@
   "description": "Expo Equivalent of Storybook",
   "version": "2.2.2",
   "private": false,
-  "main": "./dist/lib/client/index.js",
+  "main": "node_modules/expo/AppEntry.js",
   "typings": "./dist/lib/client/index.d.ts",
   "repository": {
     "type": "git",
