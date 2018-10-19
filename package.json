@@ -65,6 +65,7 @@
     "build:release": "npm run clean && npm run tsc -- -d ",
     "prepublish": "npm run build:release",
     "watch": "npm run build -- -w",
+    "watch:demo": "npm run build:demo -- -w",
     "test": "echo 'not yet'",
     "commit": "git-cz",
     "demo": "npm run build:demo && expo start",
