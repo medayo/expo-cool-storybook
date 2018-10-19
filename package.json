@@ -1,7 +1,7 @@
 {
   "name": "@medayo/expo-cool-storybook",
   "description": "Expo Equivalent of Storybook",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "private": false,
   "main": "./dist/lib/client/index.js",
   "typings": "./dist/lib/client/index.d.ts",
