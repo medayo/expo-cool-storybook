@@ -41,8 +41,10 @@ interface ICoolStoryBook {
 
     public async sendAllStories() {
         const stories = StoryStorage.getAll();
-        for (const [key, detail] of Object.entries(stories)) {
-            await this.sendStory(detail, key);
+        for (const key in stories) {
+            if (stories.hasOwnProperty(key)) {
+                await this.sendStory(stories[key], key);
+            }
         }
     }
 
