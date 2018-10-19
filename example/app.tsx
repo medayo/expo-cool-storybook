@@ -25,7 +25,7 @@ export class DemoApp extends React.Component<any, any> {
         return (
             <View style={{ flex: 1 }}>
                 <CoolStorybook
-                    host='http://192.168.1.102:3000'
+                    host='http://192.168.1.212:3001'
                     ref={(ref) => CoolStorybookService.setRef(ref)}
                 />
                 <View style={container}>
