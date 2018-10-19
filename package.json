@@ -1,13 +1,23 @@
 {
   "name": "@medayo/expo-cool-storybook",
-  "description": "Expo Equivalent of Storybook (p.s. we love storybook)",
+  "description": "Expo Equivalent of Storybook",
   "version": "2.2.2",
   "private": false,
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "./dist/lib/client/index.js",
+  "typings": "./dist/lib/client/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/medayo/expo-cool-storybook.git"
   },
+  "author": "Calum MacRae (Medayo LTD)",
+  "license": "MIT",
+  "keywords": [
+    "Expo",
+    "Storybook",
+    "TypeScript",
+    "decorators",
+    "socketio"
+  ],
   "devDependencies": {
     "@semantic-release/git": "^7.0.4",
     "@types/expo": "^27.0.13",
